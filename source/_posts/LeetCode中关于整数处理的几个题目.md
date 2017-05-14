@@ -2,7 +2,7 @@
 date: 2016-5-2 15:03:35
 categories: 算法
 tags: 
-  - algorithm
+  - Algorithm
 toc: true
 comments: true
 ---
