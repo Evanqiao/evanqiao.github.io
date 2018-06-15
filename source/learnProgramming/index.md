@@ -20,6 +20,10 @@ date: 2017-05-02 20:30:39
 <font size=4 face="微软雅黑"> 求最大公约数 </font>
 [<font size=4 face="微软雅黑"> 利用指针解决算法问题 </font>][4]
 [<font size=4 face="微软雅黑"> 初探二叉树的应用 </font>][7]
+[<font size=4 face="微软雅黑"> 堆和优先队列的算法应用 </font>][9]
+[<font size=4 face="微软雅黑"> 实践回溯法 </font>][10]
+[<font size=4 face="微软雅黑"> NOIP2012_2寻宝  </font>][11]
+[<font size=4 face="微软雅黑"> NOIP2013_2表达式求值 </font>][12]
 
 ## Mathematics
 
@@ -30,6 +34,7 @@ date: 2017-05-02 20:30:39
 
 [<font size=4 face="微软雅黑"> 树莓派点亮LCD1602  </font>][3]
 [<font size=4 face="微软雅黑"> LCD通过按键显示自定义图标  </font>][5]
+[<font size=4 face="微软雅黑"> 来玩一下超声波测距  </font>][8]
 
   [1]: http://blog.xiaojn.cn/2017/05/02/Python%E5%92%8CC++%E9%87%8C%E9%9D%A2%E8%AE%A1%E7%AE%97%E5%AF%B9%E6%95%B0%E5%92%8C%E5%BC%80%E6%96%B9/
   [2]: http://blog.xiaojn.cn/2017/05/03/%E9%9B%B6%E7%82%B9%E5%AE%9A%E7%90%86%E5%92%8C%E4%BB%8B%E5%80%BC%E5%AE%9A%E7%90%86/
@@ -38,3 +43,8 @@ date: 2017-05-02 20:30:39
   [5]: http://blog.xiaojn.cn/2017/05/08/LCD%E9%80%9A%E8%BF%87%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6%E6%98%BE%E7%A4%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87/ 
   [6]: http://blog.xiaojn.cn/2017/05/09/cpp_exercises_1/
   [7]: http://blog.xiaojn.cn/2017/05/14/Practical_binaryTree/
+  [8]: http://blog.xiaojn.cn/2017/05/14/%E6%9D%A5%E7%8E%A9%E4%B8%80%E4%B8%8B%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/
+  [9]: http://blog.xiaojn.cn/2017/05/21/heap_priority_queue/ 
+  [10]: http://blog.xiaojn.cn/2017/06/04/Practical_backTracking/
+  [11]: http://blog.xiaojn.cn/2017/07/30/NOIP2012_02%E5%AF%BB%E5%AE%9D/
+  [12]: http://blog.xiaojn.cn/2017/07/30/NOIP2013_2%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/
