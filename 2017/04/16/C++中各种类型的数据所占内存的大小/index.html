@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>C++中各种类型的数据所占内存的大小 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本类型占空间的大小直接上例子：测试环境是64位机上。以下测试都在64位机上进行。32位机上，只有指针类型是4字节的，其他的基本类型和64位机上一样。 1234567891011121314151617181920#define  sz(A) sizeof(A)int main() &amp;#123;    cout &amp;lt;&amp;lt; &quot;sz(int) = &quot; &amp;lt;&amp;lt; sz(int) &amp;lt;">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中各种类型的数据所占内存的大小">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/04/16/C++中各种类型的数据所占内存的大小/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="基本类型占空间的大小直接上例子：测试环境是64位机上。以下测试都在64位机上进行。32位机上，只有指针类型是4字节的，其他的基本类型和64位机上一样。 1234567891011121314151617181920#define  sz(A) sizeof(A)int main() &amp;#123;    cout &amp;lt;&amp;lt; &quot;sz(int) = &quot; &amp;lt;&amp;lt; sz(int) &amp;lt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/sizeof.png">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++中各种类型的数据所占内存的大小">
+<meta name="twitter:description" content="基本类型占空间的大小直接上例子：测试环境是64位机上。以下测试都在64位机上进行。32位机上，只有指针类型是4字节的，其他的基本类型和64位机上一样。 1234567891011121314151617181920#define  sz(A) sizeof(A)int main() &amp;#123;    cout &amp;lt;&amp;lt; &quot;sz(int) = &quot; &amp;lt;&amp;lt; sz(int) &amp;lt;">
+<meta name="twitter:image" content="http://blog.xiaojn.cn/images/sizeof.png">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C++中各种类型的数据所占内存的大小" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/16/C++中各种类型的数据所占内存的大小/" class="article-date">
+  <time datetime="2017-04-16T13:57:36.000Z" itemprop="datePublished">2017-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程语言/">编程语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++中各种类型的数据所占内存的大小
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本类型占空间的大小"><a href="#基本类型占空间的大小" class="headerlink" title="基本类型占空间的大小"></a>基本类型占空间的大小</h2><p>直接上例子：测试环境是64位机上。<strong>以下测试都在64位机上进行。</strong><br>32位机上，只有指针类型是4字节的，其他的基本类型和64位机上一样。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  sz(A) sizeof(A)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(int) = "</span> &lt;&lt; sz(<span class="keyword">int</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(long) = "</span> &lt;&lt; sz(<span class="keyword">long</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(long long) = "</span> &lt;&lt; sz(<span class="keyword">long</span> <span class="keyword">long</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(float) = "</span> &lt;&lt; sz(<span class="keyword">float</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(double) = "</span> &lt;&lt; sz(<span class="keyword">double</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(long double) = "</span> &lt;&lt; sz(<span class="keyword">long</span> <span class="keyword">double</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(char *) = "</span> &lt;&lt; sz(<span class="keyword">char</span> *) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    sz(int) = 4</span></span><br><span class="line"><span class="comment">    sz(long) = 4</span></span><br><span class="line"><span class="comment">    sz(long long) = 8</span></span><br><span class="line"><span class="comment">    sz(float) = 4</span></span><br><span class="line"><span class="comment">    sz(double) = 8</span></span><br><span class="line"><span class="comment">    sz(long double) = 16</span></span><br><span class="line"><span class="comment">    sz(char *) = 8</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="枚举类型和共用体类型占空间大小"><a href="#枚举类型和共用体类型占空间大小" class="headerlink" title="枚举类型和共用体类型占空间大小"></a>枚举类型和共用体类型占空间大小</h2><p>枚举类型所占的空间是4字节。共用体中的所有成员共用的是同一段内存，共用体中的成员的偏移量也都一样，union所占的内存大小是最长的成员所占内存的大小，同时也要考虑到字节对齐，字节对齐遵循的原则是union变量的大小需要是最长成员(基本类型)大小的整数倍。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  sz(A) sizeof(A)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">enum</span> &#123;</span><br><span class="line">        a = <span class="number">1</span>,</span><br><span class="line">        b = <span class="number">2</span>,</span><br><span class="line">        m = <span class="number">3</span>,</span><br><span class="line">        ch = <span class="string">'a'</span></span><br><span class="line">    &#125;_enum_A;</span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">char</span> <span class="built_in">array</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">char</span> *p;</span><br><span class="line">    &#125;_union_U;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(_enum_A) = "</span> &lt;&lt; sz(_enum_A) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(_union_U) = "</span> &lt;&lt; sz(_union_U) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (<span class="keyword">char</span> *)&amp;_union_U.p - (<span class="keyword">char</span> *)&amp;_union_U);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">sz(_enum_A) = 4</span></span><br><span class="line"><span class="comment">sz(_union_U) = 16</span></span><br><span class="line"><span class="comment">0</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类所占空间的大小"><a href="#类所占空间的大小" class="headerlink" title="类所占空间的大小"></a>类所占空间的大小</h2><p>类中的函数不占空间，函数在代码区存放。如果一个类只含有函数(非虚函数)，这个类占的内存大小是1，如果含有虚函数，就需要存放虚表指针，占用的空间是指针所占空间的大小。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  sz(A) sizeof(A)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(A) = "</span> &lt;&lt; sz(A) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(B) = "</span> &lt;&lt; sz(B) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">sz(A) = 1</span></span><br><span class="line"><span class="comment">sz(B) = 8</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>分析一下类所占内存大小和类中成员的偏移量。<br>两点原则：</p>
+<ul>
+<li>成员的偏移量是该成员所占字节的整数倍，如果成员是结构体的话，那就是结构体中最长的基本类型所占字节的整数倍</li>
+<li>类或结构体的总大小需要是类或结构体中最长的基本类型所占字节的整数倍</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">union</span> U &#123;</span><br><span class="line">        <span class="keyword">char</span> buff[<span class="number">13</span>];</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">    &#125;u;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> ld;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;    &#125;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">char</span>* (*f)(<span class="keyword">void</span>*);</span><br><span class="line">    <span class="keyword">enum</span>&#123;red, green, blue&#125; color;</span><br><span class="line">&#125; base;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sz(base) = "</span> &lt;&lt; sz(base) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"The offset of ld is "</span> ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (<span class="keyword">char</span> *)&amp;base.ld - (<span class="keyword">char</span> *)&amp;base);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"The offset of u is "</span> ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (<span class="keyword">char</span> *)&amp;base.u - (<span class="keyword">char</span> *)&amp;base);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">sz(base) = 64</span></span><br><span class="line"><span class="comment">The offset of ld is 32</span></span><br><span class="line"><span class="comment">The offset of u is 4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/sizeof.png" alt="base对象占用空间布局"></p>
+<p>全局变量和静态变量的存储是放在一块的，在程序编译时分配。局部类中不能包含静态变量，而全局类中可以包含静态变量，如果类中含有静态变量时，在用sizeof去统计类的大小时，静态变量不包含在内。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AA</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> si;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> abc;</span><br><span class="line">        <span class="keyword">double</span> d;</span><br><span class="line">    &#125;s;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sz(AA) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/04/16/C++中各种类型的数据所占内存的大小/" data-id="cjxbs4qga000051671cqudav7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/02/Python和C++里面计算对数和开方/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python和C++里面计算对数和开方
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/16/MarkDown使用速查手册/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MarkDown使用速查手册</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>树莓派点亮LCD1602 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用Adafruit_Python_CharLCD库操作LCD1602前，需要做的准备工作：配置树莓派使能i2c: 1sudo raspi-config  安装i2c-tools检索i2c设备: 1sudo apt-get install i2c-tools  确保i2c设备连上之后，检索i2c设备： 12pi@raspberrypi ~ $ sudo i2cdetect -y 1Error:">
+<meta name="keywords" content="Raspberry">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派点亮LCD1602">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/05/03/树莓派点亮LCD1602/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="使用Adafruit_Python_CharLCD库操作LCD1602前，需要做的准备工作：配置树莓派使能i2c: 1sudo raspi-config  安装i2c-tools检索i2c设备: 1sudo apt-get install i2c-tools  确保i2c设备连上之后，检索i2c设备： 12pi@raspberrypi ~ $ sudo i2cdetect -y 1Error:">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/raspberry_pin.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/raspberry_lcd_animation.gif">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.681Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派点亮LCD1602">
+<meta name="twitter:description" content="使用Adafruit_Python_CharLCD库操作LCD1602前，需要做的准备工作：配置树莓派使能i2c: 1sudo raspi-config  安装i2c-tools检索i2c设备: 1sudo apt-get install i2c-tools  确保i2c设备连上之后，检索i2c设备： 12pi@raspberrypi ~ $ sudo i2cdetect -y 1Error:">
+<meta name="twitter:image" content="http://blog.xiaojn.cn/images/raspberry_pin.png">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-树莓派点亮LCD1602" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/03/树莓派点亮LCD1602/" class="article-date">
+  <time datetime="2017-05-03T14:58:36.000Z" itemprop="datePublished">2017-05-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我学编程/">我学编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派点亮LCD1602
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/raspberry_pin.png" alt="树莓派管脚图"></p>
+<p>使用<code>Adafruit_Python_CharLCD</code>库操作LCD1602前，需要做的准备工作：<br>配置树莓派使能i2c:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+
+<p>安装i2c-tools检索i2c设备:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install i2c-tools</span><br></pre></td></tr></table></figure>
+
+<p>确保i2c设备连上之后，检索i2c设备：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi ~ $ sudo i2cdetect -y 1</span><br><span class="line">Error: Could not open file `/dev/i2c-1&apos; or `/dev/i2c/1&apos;: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>这里出现了问题，找不到i2c设备，原因是没有加载设备，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe i2c-dev</span><br></pre></td></tr></table></figure>
+
+<p>如果要永久载入设备，需要修改文件<code>/etc/modules</code>加入<code>i2c-dev</code>这一行。<br>关于设备载入的配置详见：<a href="http://blog.csdn.net/xukai871105/article/details/18234075" target="_blank" rel="noopener">I2C设备载入和速率设置</a><br>由于linux下设备即时文件，同样可使用命令<code>ls /dev | grep i2c</code>来查看设备有没有加载。</p>
+<p>下载和安装<code>Adafruit_Python_CharLCD</code>库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/adafruit/Adafruit_Python_CharLCD.git</span><br><span class="line">cd Adafruit_Python_CharLCD</span><br><span class="line">sudo apt-get install python-dev</span><br><span class="line">sudo python3 setup.py install</span><br></pre></td></tr></table></figure>
+
+<p>作业题目：<br>按顺序（GREEN，RED，CYAN，BLUE，YELLOW），间隔1秒点亮RGB，同时保持LCD显示正确。</p>
+<p>方法1，简单暴力的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="comment"># Example using a character LCD plate.</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> Adafruit_CharLCD <span class="keyword">as</span> LCD</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize the LCD using the pins</span></span><br><span class="line">lcd = LCD.Adafruit_CharLCDPlate()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Press Ctrl-C to quit.'</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">	lcd.set_color(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>)</span><br><span class="line">	lcd.clear()</span><br><span class="line">	lcd.message(<span class="string">'GREEN'</span>)</span><br><span class="line">	time.sleep(<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">	lcd.set_color(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">	lcd.clear()</span><br><span class="line">	lcd.message(<span class="string">'RED'</span>)</span><br><span class="line">	time.sleep(<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">	lcd.set_color(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>)</span><br><span class="line">	lcd.clear()</span><br><span class="line">	lcd.message(<span class="string">'CYAN'</span>)</span><br><span class="line">	time.sleep(<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">	lcd.set_color(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>)</span><br><span class="line">	lcd.clear()</span><br><span class="line">	lcd.message(<span class="string">'BLUE'</span>)</span><br><span class="line">	time.sleep(<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">	lcd.set_color(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>)</span><br><span class="line">	lcd.clear()</span><br><span class="line">	lcd.message(<span class="string">'YELLOW'</span>)</span><br><span class="line">	time.sleep(<span class="number">1.0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>方法2，易扩展的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> Adafruit_CharLCD <span class="keyword">as</span> LCD</span><br><span class="line"></span><br><span class="line">color_dicts = &#123;<span class="string">'GREEN'</span>: (<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>), </span><br><span class="line">		 <span class="string">'RED'</span>: (<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>),	</span><br><span class="line">		 <span class="string">'CYAN'</span>: (<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>),</span><br><span class="line">		 <span class="string">'BLUE'</span>: (<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>), </span><br><span class="line">		 <span class="string">'YELLOW'</span>: (<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">animation</span><span class="params">(color, seconds)</span>:</span></span><br><span class="line">	lcd = LCD.Adafruit_CharLCDPlate()</span><br><span class="line">	<span class="keyword">if</span> color <span class="keyword">in</span> color_dicts:</span><br><span class="line">		rgb = color_dicts.get(color)	</span><br><span class="line">		lcd.set_color(rgb[<span class="number">0</span>], rgb[<span class="number">1</span>], rgb[<span class="number">2</span>])</span><br><span class="line">		lcd.clear()</span><br><span class="line">		lcd.message(color)</span><br><span class="line">		time.sleep(seconds)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	print(<span class="string">'Press Ctrl-C to quit.'</span>)</span><br><span class="line">	colors = [<span class="string">'GREEN'</span>, <span class="string">'RED'</span>, <span class="string">'CYAN'</span>, <span class="string">'BLUE'</span>, <span class="string">'YELLOW'</span>]</span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		<span class="keyword">for</span> color <span class="keyword">in</span> colors:</span><br><span class="line">			animation(color, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行Python程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./char_LCD_animation.py</span><br></pre></td></tr></table></figure>
+
+<p>这种执行方法需要在Python程序的第一行写上<code>#!/usr/bin/python3</code>，而且需要Python程序文件拥有可执行的属性。</p>
+<p>效果：<br><img src="/images/raspberry_lcd_animation.gif" alt="树莓派LCD动画"></p>
+<p>说明：<br>我这里的显示颜色和对应的文字不一样，原因可能是在淘宝上买的模块的硬件的LED灯连线是错误的，官方的例子运行起来颜色对应也不正确。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/05/03/树莓派点亮LCD1602/" data-id="cjxbs4qhk001h5167334a6n6h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry/">Raspberry</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/Tricks_for_Vim/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vim中的“奇技淫巧”
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/03/零点定理和介值定理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">零点定理和介值定理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

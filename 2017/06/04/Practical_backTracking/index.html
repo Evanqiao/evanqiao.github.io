@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>实践回溯法 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="素数环问题输入一个整数n，输出所有由1~n排成的环，满足任意两个相邻数之和都是素数。样例输入：6    样例输出：1 4 3 2 5 61 6 5 2 3 4（注：输出都以1开头，其他循环的不用输出，如4 3 2 5 6 1） 思路： 1234567891011输入n状态选择：以环的前i个数为状态void solve(int a[], int i) &amp;#123;    if(i == n) &amp;#1">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实践回溯法">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/06/04/Practical_backTracking/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="素数环问题输入一个整数n，输出所有由1~n排成的环，满足任意两个相邻数之和都是素数。样例输入：6    样例输出：1 4 3 2 5 61 6 5 2 3 4（注：输出都以1开头，其他循环的不用输出，如4 3 2 5 6 1） 思路： 1234567891011输入n状态选择：以环的前i个数为状态void solve(int a[], int i) &amp;#123;    if(i == n) &amp;#1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/algorithm/backtracking/8queens.png">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="实践回溯法">
+<meta name="twitter:description" content="素数环问题输入一个整数n，输出所有由1~n排成的环，满足任意两个相邻数之和都是素数。样例输入：6    样例输出：1 4 3 2 5 61 6 5 2 3 4（注：输出都以1开头，其他循环的不用输出，如4 3 2 5 6 1） 思路： 1234567891011输入n状态选择：以环的前i个数为状态void solve(int a[], int i) &amp;#123;    if(i == n) &amp;#1">
+<meta name="twitter:image" content="http://blog.xiaojn.cn/images/algorithm/backtracking/8queens.png">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Practical_backTracking" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/04/Practical_backTracking/" class="article-date">
+  <time datetime="2017-06-04T03:12:36.000Z" itemprop="datePublished">2017-06-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我学编程/">我学编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      实践回溯法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="素数环问题"><a href="#素数环问题" class="headerlink" title="素数环问题"></a>素数环问题</h2><p>输入一个整数n，输出所有由1~n排成的环，满足任意两个相邻数之和都是素数。<br>样例输入：<br>6   
+样例输出：<br>1 4 3 2 5 6<br>1 6 5 2 3 4<br>（注：输出都以1开头，其他循环的不用输出，如4 3 2 5 6 1）</p>
+<p>思路：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入n</span><br><span class="line">状态选择：以环的前i个数为状态</span><br><span class="line">void solve(int a[], int i) &#123;</span><br><span class="line">    if(i == n) &#123;</span><br><span class="line">        判断a是否符合素数环条件，符合就输出</span><br><span class="line">    &#125;</span><br><span class="line">    for(a[i] = 1, i &lt;= n; a[i]++) &#123;</span><br><span class="line">        solve(a, i + 1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">调用solve(0)</span><br></pre></td></tr></table></figure>
+
+<p>solve和search是竞赛中最常出现的函数名称，意为用暴力方法解决问题。</p>
+<p>题目的代码为：<a href="https://github.com/Evanqiao/CSTutorship/blob/master/Algorithm/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/primering.cpp" target="_blank" rel="noopener">primering.cpp</a></p>
+<p>本题目在判断某个数是否是素数时，存在重复的判断，可以进行优化，预先把<code>1 ~ 2n-1</code>的数是否是素数存到一个表中，在使用的时候，不需要再计算，直接查询即可。代码如下所示。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; table;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;    <span class="comment">// 判断质数</span></span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">1</span> || n==<span class="number">2</span> || (n&gt;<span class="number">2</span> &amp;&amp; n%<span class="number">2</span>==<span class="number">0</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=<span class="built_in">sqrt</span>(n);i+=<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (n%i==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 回溯法遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> data[],<span class="keyword">int</span> n,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    cout&lt;&lt;"Seaching: "&lt;&lt;data[1]; // 日志</span></span><br><span class="line"><span class="comment">    for (int j=2;j&lt;=i;j++)&#123;</span></span><br><span class="line"><span class="comment">        cout&lt;&lt;" "&lt;&lt;data[j];</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    cout&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (i==n)&#123;    <span class="comment">// 递归边界，n个数都确定了位置</span></span><br><span class="line">        <span class="keyword">if</span> (table[data[n]+data[<span class="number">1</span>]]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;  <span class="comment">// 最后判断首尾和是不是素数，是的话就找到一个解</span></span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;data[j]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp=data[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=i;j&lt;=n;j++)&#123;  <span class="comment">// 枚举尚未确定的数字</span></span><br><span class="line">        <span class="keyword">if</span> (table[data[j]+data[i<span class="number">-1</span>]])&#123; <span class="comment">// 剪枝</span></span><br><span class="line">            data[i]=data[j];    <span class="comment">// 交换i,j位的数字</span></span><br><span class="line">            data[j]=tmp;</span><br><span class="line">            search(data,n,i+<span class="number">1</span>);   <span class="comment">// 递归搜索下一个数</span></span><br><span class="line">            data[j]=data[i];    <span class="comment">// 恢复第j位的数字</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    data[i]=tmp;    <span class="comment">// 恢复第i位的数字</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">1</span>) &#123;   <span class="comment">// 预判，也是一种优化</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">clock_t</span> start, end;</span><br><span class="line">    start = clock();</span><br><span class="line">    table.reserve(<span class="number">2</span> * n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">2</span> * n; i++) &#123;</span><br><span class="line">        table[i] = isPrime(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> data[n+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++) &#123;    <span class="comment">// 初始化排列</span></span><br><span class="line">        data[j]=j;</span><br><span class="line">    &#125;</span><br><span class="line">    search(data,n,<span class="number">2</span>);   <span class="comment">// 为什么从2开始？因为循环对称性，第1位固定为1&#125;</span></span><br><span class="line">    end = clock();</span><br><span class="line">    <span class="comment">// 用来统计算法的执行时间</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (end - start) / CLOCKS_PER_SEC &lt;&lt; <span class="string">" s"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="再谈小球下落问题"><a href="#再谈小球下落问题" class="headerlink" title="再谈小球下落问题"></a>再谈小球下落问题</h2><p>$2^D-1$个开关排列成深度为D的二叉树，最初都为关闭状态。有n个小球从顶端依次落下，并遵循如下规则：</p>
+<p>如果经过一个关闭的开关，则开关打开，小球落向左侧；<br>如果经过一个打开的开关，则开关关闭，小球落向右侧；<br>输入D，n，输出最后一个小球最终落到的位置。<br>样例输入:<br>4 3<br>样例输出：<br>10</p>
+<p>原来的方法是模拟小球下落的过程，具体代码见 <a href="http://blog.xiaojn.cn/2017/05/14/Practical_binaryTree/">初探二叉树的应用</a> 一文。</p>
+<p>&emsp;&emsp;原模拟算法的时间复杂度很高。注意到有这样的规律，节点<code>k</code>左右子节点编号分别为<code>2k</code>和<code>2k+1</code>，每个小球都会落在根结点上，因此前两个小球必然是一个在左子树，一个在右子树。一般地，只需看小球编号的奇偶性，就能知道它是最终在哪棵子树中。对于那些落入根结点左子树的小球来说，只需知道该小球是第几个落在根的左子树里的，就可以知道它下一步往左还是往右了。依此类推，直到小球落到叶子上。<br>&emsp;&emsp;对于编号为<code>id</code>的小球，如果<code>id</code>为奇数，它是往左走的第<code>(id+1)/2</code>个小球，如果<code>id</code>为偶数，它是往右走的第<code>id/2</code>个小球。这样就可以直接模拟出最后一个小球的路线：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> k = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; D - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(n % <span class="number">2</span>) &#123;</span><br><span class="line">        k = k * <span class="number">2</span>;</span><br><span class="line">        n = (n + １) / <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        k = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        n /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h2><p>&nbsp;&nbsp;This one is a classic in computer science. The goal is to assign eight queens to eight positions on an 8x8 chessboard so that no queen, according to the rules of normal chess play, can attack any other queen on the board.<br>In pseudocode, our strategy will be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Start in the leftmost columm</span><br><span class="line">If all queens are placed, return true</span><br><span class="line">for (every possible choice among the rows in this column)</span><br><span class="line">    if the queen can be placed safely there,</span><br><span class="line">        make that choice and then recursively try to place the rest of the queens</span><br><span class="line">        if recursion successful, return true</span><br><span class="line">        if !successful, remove queen and try another row in this column</span><br><span class="line">if all rows have been tried and nothing worked, return false to trigger backtracking</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/algorithm/backtracking/8queens.png" alt="八皇后问题棋盘状态树"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> NUM_QUEENS = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grid</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    T v[NUM_QUEENS][NUM_QUEENS] = &#123; &#123;<span class="number">0</span>&#125; &#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 皇后是按列进行放置的，每列只有一个皇后，本函数是检查前col-1个皇后和现在放置在</span></span><br><span class="line"><span class="comment">     * (col, row) 上的皇后是否冲突</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSafe</span><span class="params">(<span class="keyword">int</span> col, <span class="keyword">int</span> row)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM_QUEENS; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (v[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ( i == row || <span class="built_in">abs</span>(i - row) == <span class="built_in">abs</span>(j - col) )</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 进入该函数时，前col-1个皇后已经正确的放置在了棋盘上</span></span><br><span class="line">        <span class="keyword">if</span> (col &gt;= NUM_QUEENS) &#123;</span><br><span class="line">            print();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> rowToTry = <span class="number">0</span>; rowToTry &lt; NUM_QUEENS; rowToTry++) &#123;</span><br><span class="line">            v[rowToTry][col] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (isSafe(col, rowToTry)) &#123;</span><br><span class="line">                solve(col + <span class="number">1</span>);     <span class="comment">// recur to place rest</span></span><br><span class="line">            &#125;</span><br><span class="line">            v[rowToTry][col] = <span class="number">0</span>;   <span class="comment">// failed, remove, try again</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Case "</span> &lt;&lt; count++ &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM_QUEENS; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; NUM_QUEENS; j++) &#123;</span><br><span class="line">                v[i][j] == <span class="number">1</span> ? <span class="built_in">printf</span>(<span class="string">"%c "</span>, <span class="number">2</span>) : <span class="built_in">printf</span>(<span class="string">". "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printSimply</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM_QUEENS; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; NUM_QUEENS; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(v[i][j] == <span class="number">1</span>)</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; j + <span class="number">1</span> &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Grid&lt;<span class="keyword">bool</span>&gt; board;</span><br><span class="line">    board.solve(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该算法可进行空间上的优化，初始化一个一维数组<code>matrix[9]</code>，对应的是棋盘中的8行，数组中元素的值代表放置皇后的列，比如如果<code>matrix[i]</code>的值不为0，就表示棋盘第<code>i</code>行，第<code>matrix[i]</code>列放置了一个皇后。代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> matrix[N + <span class="number">1</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSafe</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;row, <span class="keyword">const</span> <span class="keyword">int</span> &amp;col)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= row - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> j = matrix[i];</span><br><span class="line">		<span class="keyword">if</span> (  j == col || <span class="built_in">abs</span>(i - row) == <span class="built_in">abs</span>(j - col) )</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; matrix[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;row)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//	进入本函数时，在N*N的棋盘前row-1行已放置了互不攻击的row-1个棋子</span></span><br><span class="line">	<span class="comment">//	现从第row行起继续为后续棋子选择合适位置</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (row &gt; N)	<span class="comment">//	输出当前的合法布局</span></span><br><span class="line">		print();</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= N; ++j) &#123;</span><br><span class="line">			matrix[row] = j;</span><br><span class="line">			<span class="keyword">if</span> (isSafe(row, j))</span><br><span class="line">				solve(row + <span class="number">1</span>);</span><br><span class="line">			matrix[row] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	solve(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/06/04/Practical_backTracking/" data-id="cjxbs4qgx000j5167w92y3crt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/05/斜挎包的聚会/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          跨斜包的聚会
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/21/heap_priority_queue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">堆和优先队列的算法应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode中关于整数处理的几个题目 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文主要介绍LeetCode中关于整数的几个算法问题：第7题：Reverse Integer第8题：String to Integer (atoi)第9题：Palindrome Number第13题：Roman to Integer Reverse Integer题目描述：Reverse digits of an integer.Example1: x = 123, return 321Examp">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode中关于整数处理的几个题目">
+<meta property="og:url" content="http://blog.xiaojn.cn/2016/05/02/LeetCode中关于整数处理的几个题目/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="本文主要介绍LeetCode中关于整数的几个算法问题：第7题：Reverse Integer第8题：String to Integer (atoi)第9题：Palindrome Number第13题：Roman to Integer Reverse Integer题目描述：Reverse digits of an integer.Example1: x = 123, return 321Examp">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode中关于整数处理的几个题目">
+<meta name="twitter:description" content="本文主要介绍LeetCode中关于整数的几个算法问题：第7题：Reverse Integer第8题：String to Integer (atoi)第9题：Palindrome Number第13题：Roman to Integer Reverse Integer题目描述：Reverse digits of an integer.Example1: x = 123, return 321Examp">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LeetCode中关于整数处理的几个题目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/02/LeetCode中关于整数处理的几个题目/" class="article-date">
+  <time datetime="2016-05-02T07:03:35.000Z" itemprop="datePublished">2016-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode中关于整数处理的几个题目
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要介绍LeetCode中关于整数的几个算法问题：<br>第7题：<a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="noopener">Reverse Integer</a><br>第8题：<a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="noopener">String to Integer (atoi)</a><br>第9题：<a href="https://leetcode.com/problems/palindrome-number/" target="_blank" rel="noopener">Palindrome Number</a><br>第13题：<a href="https://leetcode.com/problems/roman-to-integer/" target="_blank" rel="noopener">Roman to Integer</a></p>
+<h1 id="Reverse-Integer"><a href="#Reverse-Integer" class="headerlink" title="Reverse Integer"></a>Reverse Integer</h1><p>题目描述：<br>Reverse digits of an integer.<br>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
+<p>题目的提示：<br>Have you thought about this?<br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!
+If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.<br>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?<br>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.<br>方法一思路：只要考虑到溢出的情况存在，这道题目的思路还是相对简单的，按顺序把一个数从个位开始分离，每次循环把低位数升一级，最高位变为最低位。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> max_int = (<span class="number">1</span> &lt;&lt; <span class="number">31</span>) - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> min_int = -max_int - <span class="number">1</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(x != <span class="number">0</span>) &#123;</span><br><span class="line">        n = x % <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span>(y &gt; max_int / <span class="number">10</span> || y &lt; min_int / <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        y = y * <span class="number">10</span> + n;</span><br><span class="line">        x /= <span class="number">10</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码地址：<a href="https://github.com/Evanqiao/LeetCode-qyh/blob/master/7_ReverseInteger/ReverseInteger.cpp" target="_blank" rel="noopener">ReverseInteger.cpp</a></p>
+<p>方法二思路：把整数转换成字符串，然后再把字符串进行逆转。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3    </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(x)</span>:</span>    </span><br><span class="line">    s = str(x)    </span><br><span class="line">    <span class="keyword">if</span>(x &gt;= <span class="number">0</span>):    </span><br><span class="line">        res = int(str(x)[::<span class="number">-1</span>])    </span><br><span class="line">    <span class="keyword">else</span>:    </span><br><span class="line">        res = -int(str(-x)[::<span class="number">-1</span>])    </span><br><span class="line">    <span class="keyword">if</span> res &gt; <span class="number">2</span> ** <span class="number">31</span> - <span class="number">1</span> <span class="keyword">or</span> res &lt; <span class="number">-2</span> ** <span class="number">31</span>:    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>    </span><br><span class="line">    <span class="keyword">return</span> res    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:    </span><br><span class="line">    a = reverse(<span class="number">-10324</span>)    </span><br><span class="line">    print(str(a))</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="String-to-Integer-atoi"><a href="#String-to-Integer-atoi" class="headerlink" title="String to Integer (atoi)"></a>String to Integer (atoi)</h1><p>题目描述：</p>
+<p>Implement atoi to convert a string to an integer.<br>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.<br>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+<p>需要注意：要考虑边界条件，如输入的字符串为空；输入的字符串带正负号；输入到字符串中包含非数字的字符；转为整数溢出的情况。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="keyword">char</span>* str)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (str==<span class="literal">NULL</span> || *str==<span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">for</span>(;<span class="built_in">isspace</span>(*str); str++);</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">bool</span> neg=<span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (*str==<span class="string">'-'</span> || *str==<span class="string">'+'</span>) &#123;</span><br><span class="line">        neg = (*str==<span class="string">'-'</span>) ;</span><br><span class="line">        str++;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">for</span>(; <span class="built_in">isdigit</span>(*str); str++) &#123;</span><br><span class="line">        <span class="keyword">int</span> digit = (*str-<span class="string">'0'</span>);</span><br><span class="line">        <span class="keyword">if</span>(neg)&#123;</span><br><span class="line">            <span class="keyword">if</span>( -ret &lt; (INT_MIN + digit)/<span class="number">10</span> ) &#123;</span><br><span class="line">                <span class="keyword">return</span> INT_MIN;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>( ret &gt; (INT_MAX - digit) /<span class="number">10</span> ) &#123;</span><br><span class="line">                <span class="keyword">return</span> INT_MAX;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        ret = <span class="number">10</span>*ret + digit ;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">return</span> neg ? -ret : ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：<a href="https://github.com/Evanqiao/LeetCode-qyh/blob/master/8_StringToInteger/StringToInteger.c" target="_blank" rel="noopener">StringToInteger.c</a></p>
+<h1 id="Palindrome-Number"><a href="#Palindrome-Number" class="headerlink" title="Palindrome Number"></a>Palindrome Number</h1><p>题目描述：<br>Determine whether an integer is a palindrome. Do this without extra space.<br>思路：注意到负数不是回文数。给一个数32623，首先计算出这个数的长度，即算出它的数量级，最高位是千、万还是十万位，然后逐步分离该数字的最低位和最高位，拿最低位和最高位进行比较，如果不相等就不是回文数，否则即为回文数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> lhs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rhs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> temp = x / <span class="number">10</span>; temp != <span class="number">0</span>; temp /= <span class="number">10</span>, len *= <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">while</span>(x) &#123;</span><br><span class="line">        lhs = x / len;</span><br><span class="line">        rhs = x % <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span>(lhs != rhs)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        x = (x % len) / <span class="number">10</span>;</span><br><span class="line">        len /= <span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：<a href="https://github.com/Evanqiao/LeetCode-qyh/blob/master/9_PalindromeNumber/palindromeNumber.cpp" target="_blank" rel="noopener">palindromeNumber.cpp</a></p>
+<h1 id="Roman-to-Integer"><a href="#Roman-to-Integer" class="headerlink" title="Roman to Integer"></a>Roman to Integer</h1><p>题目描述：</p>
+<p>Given a roman numeral, convert it to an integer.<br>Input is guaranteed to be within the range from 1 to 3999.<br>首先要知道Roman数的计数规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/*    </span><br><span class="line">* 简单的罗马数字见下:    </span><br><span class="line">* I - 1     </span><br><span class="line">* II - 2     </span><br><span class="line">* III - 3     </span><br><span class="line">* IV - 4     </span><br><span class="line">* V - 5     </span><br><span class="line">* VI - 6     </span><br><span class="line">* X - 10     </span><br><span class="line">* L - 50     </span><br><span class="line">* C - 100     </span><br><span class="line">* D - 500     </span><br><span class="line">* M - 1000     </span><br><span class="line">* 罗马数字共有七个，即I(1)，V(5)，X(10)，L(50)，C(100)，D(500)，M(1000)。    </span><br><span class="line">* 按照下面的规则可以表示任意正整数。    </span><br><span class="line">*    </span><br><span class="line">* 重复数次：一个罗马数字重复几次，就表示这个数的几倍。     </span><br><span class="line">* 右加左减：在一个较大的罗马数字的右边记上一个较小的罗马数字，表示大数字加小数字。    </span><br><span class="line">* 在一个较大的数字的左边记上一个较小的罗马数字，表示大数字减小数字。    </span><br><span class="line">* 但是，左减不能跨越等级。比如，99不可以用IC表示，用XCIX表示。     </span><br><span class="line">* 加线乘千：在一个罗马数字的上方加上一条横线或者在右下方写M，    </span><br><span class="line">* 表示将这个数字乘以1000，即是原数的1000倍。    </span><br><span class="line">* 同理，如果上方有两条横线，即是原数的1000000倍。     </span><br><span class="line">* 单位限制：同样单位只能出现3次，如40不能表示为XXXX，而要表示为XL。     </span><br><span class="line">*    </span><br><span class="line">* MCXIV----1114    </span><br><span class="line">* CCCLIX---359    </span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>思路：先把每一个罗马数字的字母对应的数表示出来。遵循左减右加原则，从所给罗马字符串的第一个字符起开始处理。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>    </span></span><br><span class="line"><span class="class">&#123;</span>    </span><br><span class="line"><span class="keyword">public</span>:    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span>    </span></span><br><span class="line"><span class="function">    </span>&#123;    </span><br><span class="line">    <span class="keyword">int</span> len = s.size();    </span><br><span class="line">    <span class="keyword">if</span>(s.size() &lt;= <span class="number">0</span>)    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">    <span class="keyword">int</span> res = romanCharToInt(s[<span class="number">0</span>]);    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;    </span><br><span class="line">        <span class="keyword">int</span> prev = romanCharToInt(s[i<span class="number">-1</span>]);    </span><br><span class="line">        <span class="keyword">int</span> curr = romanCharToInt(s[i]);    </span><br><span class="line">        <span class="keyword">if</span>(prev &lt; curr) &#123;    </span><br><span class="line">            res = res - prev + (curr - prev);       </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">            res += curr;      </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> res;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanCharToInt</span><span class="params">(<span class="keyword">char</span> ch)</span>    </span></span><br><span class="line"><span class="function">    </span>&#123;    </span><br><span class="line">    <span class="keyword">int</span> val = <span class="number">0</span>;     </span><br><span class="line">    <span class="keyword">switch</span>(ch) &#123;    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'I'</span>:    </span><br><span class="line">        val = <span class="number">1</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'V'</span>:    </span><br><span class="line">        val = <span class="number">5</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'X'</span>:    </span><br><span class="line">        val = <span class="number">10</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'L'</span>:    </span><br><span class="line">        val = <span class="number">50</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'C'</span>:    </span><br><span class="line">        val = <span class="number">100</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'D'</span>:    </span><br><span class="line">        val = <span class="number">500</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'M'</span>:    </span><br><span class="line">        val = <span class="number">1000</span>;    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    <span class="keyword">default</span>:    </span><br><span class="line">        <span class="keyword">break</span>;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> val;        </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：<a href="https://github.com/Evanqiao/LeetCode-qyh/blob/master/13_RomanToInteger/RomanToInteger.cpp" target="_blank" rel="noopener">RomanToInteger.cpp</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2016/05/02/LeetCode中关于整数处理的几个题目/" data-id="cjxbs4qgo000a5167qbk3qj27" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/10/刷编程竞赛类题目的一些小技巧/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          刷编程竞赛类题目的一些小技巧
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

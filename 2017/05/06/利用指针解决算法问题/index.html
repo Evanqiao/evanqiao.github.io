@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>利用指针解决算法问题 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="报数问题n个人围成一圈，编号依次为1…n，(n&amp;lt;=1000000)，从第一个人开始1-2报数，报到2的出列。输入n，输出最后剩下的一个人的编号。样例输入：13样例输出：11 12345678910111213141516171819// 使用数组的解法int countByArray(int n)&amp;#123;    vector&amp;lt;int&amp;gt; v = vector&amp;lt;int&amp;gt">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用指针解决算法问题">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/05/06/利用指针解决算法问题/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="报数问题n个人围成一圈，编号依次为1…n，(n&amp;lt;=1000000)，从第一个人开始1-2报数，报到2的出列。输入n，输出最后剩下的一个人的编号。样例输入：13样例输出：11 12345678910111213141516171819// 使用数组的解法int countByArray(int n)&amp;#123;    vector&amp;lt;int&amp;gt; v = vector&amp;lt;int&amp;gt">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用指针解决算法问题">
+<meta name="twitter:description" content="报数问题n个人围成一圈，编号依次为1…n，(n&amp;lt;=1000000)，从第一个人开始1-2报数，报到2的出列。输入n，输出最后剩下的一个人的编号。样例输入：13样例输出：11 12345678910111213141516171819// 使用数组的解法int countByArray(int n)&amp;#123;    vector&amp;lt;int&amp;gt; v = vector&amp;lt;int&amp;gt">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-利用指针解决算法问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/06/利用指针解决算法问题/" class="article-date">
+  <time datetime="2017-05-06T14:57:36.000Z" itemprop="datePublished">2017-05-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我学编程/">我学编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用指针解决算法问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="报数问题"><a href="#报数问题" class="headerlink" title="报数问题"></a>报数问题</h2><p>n个人围成一圈，编号依次为1…n，(n&lt;=1000000)，从第一个人开始1-2报数，报到2的出列。输入n，输出最后剩下的一个人的编号。<br>样例输入：<br>13<br>样例输出：<br>11</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用数组的解法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countByArray</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v = <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n); <span class="comment">// 1表示已经出列，初始都是0</span></span><br><span class="line">    <span class="keyword">int</span> current = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(v[current] == <span class="number">1</span>) &#123; <span class="comment">// 找下一个0</span></span><br><span class="line">            current = (current + <span class="number">1</span>) % n;</span><br><span class="line">        &#125;</span><br><span class="line">        current = (current + <span class="number">1</span>) % n;  <span class="comment">// 报数1，留在队列中</span></span><br><span class="line">        <span class="keyword">while</span>(v[current] == <span class="number">1</span>) &#123; <span class="comment">// 再找下一个0</span></span><br><span class="line">            current = (current + <span class="number">1</span>) % n;</span><br><span class="line">        &#125;</span><br><span class="line">        v[current] = <span class="number">1</span>;   <span class="comment">// 报数2，出列</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(v[current]) &#123;</span><br><span class="line">        current = (current + <span class="number">1</span>) % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每报数一圈都要循环n次，每轮报完数后人数减半，总共需要报数logn圈，所以此算法的时间复杂度是<code>O(nlogn)</code>。
+由于已经出队的仍然在队列中，还是要占用遍历的时间，我们希望把已经出队的删掉，链表中删掉一个元素的时间是<code>O(1)</code>，用循环链表解决此问题，算法的时间复杂度是<code>O(n)</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> &#123;</span>    <span class="comment">// 链表的节点类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> id; <span class="comment">// 编号</span></span><br><span class="line">    ListNode* next = <span class="number">0</span>;   <span class="comment">// 指向下一个节点的指针</span></span><br><span class="line">    ListNode(<span class="keyword">int</span> id0)&#123;  <span class="comment">// 初始化函数</span></span><br><span class="line">        id = id0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使链表解法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countByLink</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    ListNode* head = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">    ListNode* tail = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;  <span class="comment">// 创建链表</span></span><br><span class="line">        tail-&gt;next = <span class="keyword">new</span> ListNode(i);</span><br><span class="line">        tail = tail-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    tail-&gt;next = head;    <span class="comment">// 连接成环</span></span><br><span class="line"></span><br><span class="line">    ListNode* current = head; <span class="comment">// 开始报数（当前节点报1）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        current-&gt;next = current-&gt;next-&gt;next;  <span class="comment">// 删除下一个节点（报2）</span></span><br><span class="line">        current = current-&gt;next;  <span class="comment">// 挪到下一个节点（报1，注意报2的已经删掉了）</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current-&gt;id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析：<br>这是一个约瑟夫环问题，可以推广到更一般的情况。n个人围成一圈，编号依次为1…n，(n&lt;=1000000)，从第一个人开始1-m报数，报到m的出列。输入n，输出最后剩下的一个人的编号。<br>用循环链表去解决的话，算法的时间复杂度是<code>O(nm)</code>。</p>
+<blockquote>
+<p>下面利用数学推导，如果能得出一个通式，就可以利用递归、循环等手段解决。下面给出推导的过程：<br>        （1）第一个被删除的数为 (m - 1) % n。<br>        （2）假设第二轮的开始数字为k，那么这n - 1个数构成的约瑟夫环为k, k + 1, k + 2, k +3, …..,k - 3, k - 2。做一个简单的映射。<br>             k         —–&gt;  0<br>             k+1    ——&gt; 1<br>             k+2    ——&gt; 2<br>               …<br>               …<br>             k-2    ——&gt;  n-2<br>        这是一个n -1个人的问题，如果能从n - 1个人问题的解推出 n 个人问题的解，从而得到一个递推公式，那么问题就解决了。假如我们已经知道了n -1个人时，最后胜利者的编号为x，利用映射关系逆推，就可以得出n个人时，胜利者的编号为 (x + k) % n。其中k等于m % n。代入(x + k) % n  &lt;=&gt;  (x + (m % n))%n &lt;=&gt; (x%n + (m%n)%n)%n &lt;=&gt; (x%n+m%n)%n &lt;=&gt; (x+m)%n<br>        （3）第二个被删除的数为(m - 1) % (n - 1)。<br>        （4）假设第三轮的开始数字为o，那么这n - 2个数构成的约瑟夫环为o, o + 1, o + 2,……o - 3, o - 2.。继续做映射。<br>             o         —–&gt;  0<br>             o+1    ——&gt; 1<br>             o+2    ——&gt; 2<br>               …<br>               …<br>             o-2     ——&gt;  n-3<br>         这是一个n - 2个人的问题。假设最后的胜利者为y，那么n -1个人时，胜利者为 (y + o) % (n -1 )，其中o等于m % (n -1 )。代入可得 (y+m) % (n-1)<br>         要得到n - 1个人问题的解，只需得到n - 2个人问题的解，倒推下去。只有一个人时，胜利者就是编号0。下面给出递推式：<br>          f [1] = 0;<br>          f [ i ] = ( f [i -1] + m) % i; (i&gt;1)<br>        有了递推公式，实现就非常简单了，给出循环的两种实现方式。</p>
+</blockquote>
+<p>参考链接：<a href="http://blog.csdn.net/wuzhekai1985/article/details/6628491" target="_blank" rel="noopener">约瑟夫环问题</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countByFormula</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span> || m &lt; <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; f(n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        f[i] = (f[i<span class="number">-1</span>] + m) % i;</span><br><span class="line">    <span class="keyword">return</span> f[n] + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2报数问题的特殊解法"><a href="#1-2报数问题的特殊解法" class="headerlink" title="1-2报数问题的特殊解法"></a>1-2报数问题的特殊解法</h2><p>1-2报数问题为报到2的出队，问最后剩下的一个人的编号。<br>结论：<br>$$J(n)=1, 当n=2^k$$<br>$$J(n)=2m+1, 当n=2^k+m$$<br>分情况讨论。<br><strong>当n=2^k时：</strong><br>如果只有2个人，显然剩余的为1号    </p>
+<p>如果有4个人，第一轮除掉2,4，剩下1,3，3死，留下1</p>
+<p>如果是8个人，先除去2,4,6,8,之后3,7，剩下1,5，除去5，又剩下1了<br>……<br>因为每轮都会出队一半的人，每一轮的开始编号都是从编号为1的人开始，最终编号为1的人会剩下。<br><strong>当n=2^k+m时：</strong><br>当n=5时，2号出队，3号报数“1”，3-&gt;4-&gt;5-&gt;1形成一个n=2^2时的问题，那么剩余的人就为3号。<br>当n=9时，2号出队，3号报数“1”，3-&gt;4-&gt;5-&gt;6-&gt;7-&gt;8-&gt;9-&gt;1形成一个n=2^3时的问题，那么剩余的人就为3号。<br>当n=13时，2,4,6,8,10号出队，11号报数“1”，11-&gt;12-&gt;13-&gt;1-&gt;3-&gt;5-&gt;7-&gt;9形成一个n=2^3时的问题，那么剩余的人就为11号。<br>……<br>根据上面的递推，剩余的人的编号就为<code>2m+1</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countBy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> r = log2(n);</span><br><span class="line">    <span class="keyword">int</span> m = n - <span class="built_in">pow</span>(<span class="number">2.0</span>, r);</span><br><span class="line">    <span class="keyword">return</span> (m == <span class="number">0</span>) ? <span class="number">1</span> : (<span class="number">2</span> * m + <span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本题的算法时间复杂度就是计算对数的时间复杂度，为<code>O(logn)</code>。</p>
+<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><p>说出以下每条语句的含义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* i;    <span class="comment">// 声明一个变量i，类型是指向整数的指针</span></span><br><span class="line"><span class="keyword">double</span>* d; <span class="comment">// 声明一个变量d，类型是指向double类型的指针</span></span><br><span class="line">Point* p;  <span class="comment">// 声明一个变量p，类型是指向Point类型的指针</span></span><br><span class="line">*i=<span class="number">3</span>;      <span class="comment">// 给i指向的变量赋值为3</span></span><br><span class="line">p-&gt;x=<span class="number">4</span>;    <span class="comment">// 给p所指向的对象的成员变量x赋值为4</span></span><br><span class="line"><span class="keyword">int</span> *p, *q, **r; <span class="comment">// 声明3个变量，p和q是指向整型的指针，r是指向指针的指针，指针变量同样占据内存中的某个位置</span></span><br><span class="line"><span class="keyword">int</span>* a[<span class="number">10</span>];  <span class="comment">// 声明一个指针数组a，数组的大小是10，存储变量的类型为指向整型的指针</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>*&gt; v; <span class="comment">// 声明一个vector容器变量v，存储变量的类型为指向整型的指针</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;* v2;  <span class="comment">// 声明一个指针变量v2，它指向的是一个存储整型变量的vector</span></span><br><span class="line"><span class="keyword">int</span> i = *p**q;  <span class="comment">// 定义一个整型变量i并初始化，初始化的值为指针p指向的变量乘以指针q指向的变量。解引用运算符的优先级高于乘运算符。</span></span><br><span class="line">*p+=i;  <span class="comment">// 指针p指向的变量或内存单元的值加赋值i</span></span><br><span class="line">q=&amp;(i+*p); <span class="comment">// &amp;为取地址运算符。这条语句有语法错误。</span></span><br><span class="line">r=&amp;p;  <span class="comment">// 指针p的地址赋给r，r为指针的指针</span></span><br></pre></td></tr></table></figure>
+
+<p>使用链表解决1-3报数问题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count3</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode* head = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">    ListNode* tail = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;  <span class="comment">// 创建链表</span></span><br><span class="line">        tail-&gt;next = <span class="keyword">new</span> ListNode(i);</span><br><span class="line">        tail = tail-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    tail-&gt;next = head;    <span class="comment">// 连接成环</span></span><br><span class="line"></span><br><span class="line">    ListNode* current = head; <span class="comment">// 开始报数（当前节点报1）</span></span><br><span class="line">    <span class="keyword">while</span>(current-&gt;next != current)&#123;</span><br><span class="line">        current = current-&gt;next;  <span class="comment">// 向前走一步</span></span><br><span class="line">        current-&gt;next = current-&gt;next-&gt;next;  <span class="comment">// 删除报数3的</span></span><br><span class="line">        current = current-&gt;next;  <span class="comment">// 挪到下一个节点报1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current-&gt;id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/05/06/利用指针解决算法问题/" data-id="cjxbs4qhd00155167n3g6c1ek" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/08/LCD通过按键控制显示自定义图标/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LCD通过按键显示自定义图标
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/Tricks_for_Vim/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vim中的“奇技淫巧”</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

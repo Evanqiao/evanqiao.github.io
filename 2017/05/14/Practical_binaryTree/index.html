@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>初探二叉树的应用 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="树的性质">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探二叉树的应用">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/05/14/Practical_binaryTree/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="树的性质">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/tree_property.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/tree_binaryTree_property_1.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/tree_binaryTree_property_2.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/tree_ball.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/tree_code_compare.png">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初探二叉树的应用">
+<meta name="twitter:description" content="树的性质">
+<meta name="twitter:image" content="http://blog.xiaojn.cn/images/tree_property.png">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Practical_binaryTree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/14/Practical_binaryTree/" class="article-date">
+  <time datetime="2017-05-14T03:12:36.000Z" itemprop="datePublished">2017-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我学编程/">我学编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初探二叉树的应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="树的性质"><a href="#树的性质" class="headerlink" title="树的性质"></a>树的性质</h2><p><img src="/images/tree_property.png" alt="树的性质"></p>
+<a id="more"></a>
+
+<h2 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h2><p><img src="/images/tree_binaryTree_property_1.png" alt=" "><br><img src="/images/tree_binaryTree_property_2.png" alt="二叉树的性质"></p>
+<p>关于树和二叉树的更多性质和应用见：<a href="https://github.com/Evanqiao/CSTutorship/blob/master/Algorithm/DataStructure-Tree/%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%BA%94%E7%94%A8_%E6%91%98%E8%87%AA2015%E5%B9%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%81%94%E8%80%83%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%AF%BC.pdf" target="_blank" rel="noopener">树的概念和应用_摘自2015年数据结构联考复习指导</a></p>
+<h2 id="小球下落问题"><a href="#小球下落问题" class="headerlink" title="小球下落问题"></a>小球下落问题</h2><p>$2^D-1$个开关排列成深度为D的二叉树，最初都为关闭状态。有n个小球从顶端依次落下，并遵循如下规则：</p>
+<ol>
+<li>如果经过一个关闭的开关，则开关打开，小球落向左侧；</li>
+<li>如果经过一个打开的开关，则开关关闭，小球落向右侧；</li>
+</ol>
+<p>输入D，n，输出最后一个小球最终落到的位置。<br>样例输入:<br>4 3<br>样例输出：<br>10</p>
+<p><img src="/images/tree_ball.png" alt="小球降落示例"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  fallingBall.cpp</span></span><br><span class="line"><span class="comment">//  tree</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by Ge, Xiao on 01/03/2017.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017 Ge, Xiao. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Node *left=<span class="number">0</span>,*right=<span class="number">0</span>;  <span class="comment">// 左右子树指针</span></span><br><span class="line">    <span class="keyword">int</span> id,status=<span class="number">0</span>;   <span class="comment">// 开关id,开关状态</span></span><br><span class="line">    </span><br><span class="line">    Node(<span class="keyword">int</span> id0)&#123;    <span class="comment">// 构造函数，可以理解为初始化函数</span></span><br><span class="line">        id=id0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">isLeaf</span><span class="params">()</span> </span>&#123; <span class="comment">// 成员方法，返回当前节点是否是叶子</span></span><br><span class="line">        <span class="keyword">return</span> left==<span class="number">0</span> &amp;&amp; right==<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addChild</span><span class="params">(Node *child,<span class="keyword">int</span> isleft)</span> </span>&#123; <span class="comment">// 添加一个新节点/子树</span></span><br><span class="line">        (isleft ? left : right) = child;    <span class="comment">// 直接设置左右子树字段</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造以id为根节点，深度为d的完全二叉树</span></span><br><span class="line"><span class="function">Node* <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span> id,<span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (depth==<span class="number">0</span>) &#123; <span class="comment">// 递归边界</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Node *node= <span class="keyword">new</span> Node(id); <span class="comment">// 本节点指针</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 递归构造左右子树，深度减一</span></span><br><span class="line">    node-&gt;addChild(buildTree(id*<span class="number">2</span>, depth<span class="number">-1</span>), <span class="number">1</span>);</span><br><span class="line">    node-&gt;addChild(buildTree(id*<span class="number">2</span>+<span class="number">1</span>, depth<span class="number">-1</span>), <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟一次下落过程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fall</span><span class="params">(Node* node)</span></span>&#123;</span><br><span class="line">    node-&gt;status ^= <span class="number">1</span>;   <span class="comment">// 改变当前节点开关</span></span><br><span class="line">    <span class="keyword">if</span> (node-&gt;isLeaf())&#123; <span class="comment">// 到底了，返回当前id</span></span><br><span class="line">        <span class="keyword">return</span> node-&gt;id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node-&gt;status==<span class="number">1</span> ? fall(node-&gt;left) : fall(node-&gt;right); <span class="comment">// 选择下一层节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d, n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;d&gt;&gt;n;</span><br><span class="line">    Node *root = buildTree(<span class="number">1</span>,d);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n<span class="number">-2</span>;i++) &#123; <span class="comment">// 模拟前n-1次</span></span><br><span class="line">        fall(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;fall(root)&lt;&lt;<span class="built_in">endl</span>;  <span class="comment">// 返回最后一次</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小球下落问题2"><a href="#小球下落问题2" class="headerlink" title="小球下落问题2"></a>小球下落问题2</h2><p>与原题一样，改为输出所有叶节点开关状态。<br>样例输入：<br>4 3<br>样例输出：<br>1 0 1 0 1 0 0 0<br><img src="/images/tree_code_compare.png" alt="与上一题的代码对比"></p>
+<p>完整代码见 <a href="https://github.com/Evanqiao/CSTutorship/blob/master/Algorithm/DataStructure-Tree/fallingball2.cpp" target="_blank" rel="noopener">fallingball2.cpp</a></p>
+<h2 id="作业题目"><a href="#作业题目" class="headerlink" title="作业题目"></a>作业题目</h2><ol>
+<li><p>证明任何树的节点数N与边数E满足关系E=N-1.<br>证明：树中每条边都会连接一个子结点，即树的边数等于树中子结点的个数，又因为根结点不是子结点，故边数E等于树的结点树减1。</p>
+</li>
+<li><p>用一个四叉树可以表示一个正方形网格的颜色情况，也可以是三角形网格，也可以是梯形网格。<br>提示：树的层数表示形状递归的层数。灰色结点表示它的子结点中有黑色和白色两种结点，白色或黑色结点如果有子结点的话，就表示他们的子结点中全是白色或黑色结点。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/05/14/Practical_binaryTree/" data-id="cjxbs4qh0000l516717jt0nlo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/14/来玩一下超声波测距/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          来玩一下超声波测距
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/09/cpp_exercises_1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C++练习题目（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

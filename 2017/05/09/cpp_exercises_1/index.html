@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>C++练习题目（一） | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="说明：这几个题目要用到的知识点都在培训班老师的讲义上有，可以去查阅相关资料来完成这些题目，写出来的代码要求是自己理解了的，提前编译和调试，确保提交的代码没有语法错误问题。提交格式： 题号_姓名的拼音.cpp （1_zhangsan.cpp）以附件形式发到我的邮箱： yihqiao@126.com">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++练习题目（一）">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/05/09/cpp_exercises_1/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="说明：这几个题目要用到的知识点都在培训班老师的讲义上有，可以去查阅相关资料来完成这些题目，写出来的代码要求是自己理解了的，提前编译和调试，确保提交的代码没有语法错误问题。提交格式： 题号_姓名的拼音.cpp （1_zhangsan.cpp）以附件形式发到我的邮箱： yihqiao@126.com">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++练习题目（一）">
+<meta name="twitter:description" content="说明：这几个题目要用到的知识点都在培训班老师的讲义上有，可以去查阅相关资料来完成这些题目，写出来的代码要求是自己理解了的，提前编译和调试，确保提交的代码没有语法错误问题。提交格式： 题号_姓名的拼音.cpp （1_zhangsan.cpp）以附件形式发到我的邮箱： yihqiao@126.com">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cpp_exercises_1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/09/cpp_exercises_1/" class="article-date">
+  <time datetime="2017-05-09T04:57:36.000Z" itemprop="datePublished">2017-05-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我学编程/">我学编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++练习题目（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说明：<br>这几个题目要用到的知识点都在培训班老师的讲义上有，可以去查阅相关资料来完成这些题目，写出来的代码要求是自己理解了的，提前编译和调试，确保提交的代码没有语法错误问题。<br>提交格式： 题号_姓名的拼音.cpp （1_zhangsan.cpp）<br>以附件形式发到我的邮箱： <code>yihqiao@126.com</code> </p>
+<a id="more"></a>
+
+<h2 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h2><p>编写一个程序，要求用户以整数方式输入秒数（使用long或long long变量存储），然后以天、小时、分钟和秒的方式显示这段时间。使用符号常量来表示每天有多少个小时、每小时有多少分钟以及每分钟有多少秒。输出样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Enter the number of seconds: 31600000</span><br><span class="line">31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds</span><br><span class="line">Enter the number of seconds: 31</span><br><span class="line">31 seconds = 0 days, 0 hours, 0 minutes, 31 seconds</span><br></pre></td></tr></table></figure>
+
+<p>提示：<br>使用常量定义变量的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const int HOURS_PER_DAY = 24</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define HOURS_PER_DAY 24</span><br></pre></td></tr></table></figure>
+
+<h2 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h2><p>编写一个程序，要求用户输入n (n &gt;= 2)个互不相同的正整数，然后输出这n个整数中的最大的偶数和最小的奇数，如果对应的奇数或偶数不存在则输出-1. 输入有两行，第一行是n，代表输入整数的个数，第二行为n个正整数，输出为两个数。样例：<br>样例1：<br>输入：<br>7
+2 7 3 8 4 18 9<br>输出：<br>18 3<br>样例2：<br>输入：<br>4
+4 8 2 10<br>输出：<br>10 -1</p>
+<h2 id="题目三"><a href="#题目三" class="headerlink" title="题目三"></a>题目三</h2><p>定义一个类来表示银行账户，数据成员包括储户姓名、账号（使用字符串表示）和存款。成员函数执行如下操作：</p>
+<ul>
+<li>创建一个对象并将其初始化；</li>
+<li>显示储户姓名、账号和存款；</li>
+<li>存入参数指定的存款；</li>
+<li>取出参数指定的款项。</li>
+</ul>
+<p>请提供类的声明和方法的实现，并编写一个小程序来演示所有的特性。</p>
+<h2 id="题目四"><a href="#题目四" class="headerlink" title="题目四"></a>题目四</h2><p>建立一个长度为n的链表，链表的节点存放的是整数值，删除链表的第m个节点，然后输出链表中每个节点的值。输入有3行，第一行为n，表示要建立的链表的长度，第二行为n个整数，依次表示链表中节点的值，第三行为要删除的节点的编号（链表节点的编号从1开始）。输出为删除一个节点后的链表。样例：<br>输入：<br>8
+3 12 -2 -10 12 49 7 9<br>3
+输出：<br>3 12 -10 12 49 7 9</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/05/09/cpp_exercises_1/" data-id="cjxbs4qh5000v516782zt3xec" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/14/Practical_binaryTree/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          初探二叉树的应用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/08/LCD通过按键控制显示自定义图标/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LCD通过按键显示自定义图标</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

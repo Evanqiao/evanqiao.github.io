@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>来玩一下超声波测距 | 晓江南的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HC-SR04">
+<meta name="keywords" content="Raspberry">
+<meta property="og:type" content="article">
+<meta property="og:title" content="来玩一下超声波测距">
+<meta property="og:url" content="http://blog.xiaojn.cn/2017/05/14/来玩一下超声波测距/index.html">
+<meta property="og:site_name" content="晓江南的博客">
+<meta property="og:description" content="HC-SR04">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/raspberry/raspberry_HC-SR04.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/raspberry/raspberry_HC-SR04_pin.png">
+<meta property="og:image" content="http://blog.xiaojn.cn/images/raspberry/raspberry_GPIO.png">
+<meta property="og:updated_time" content="2019-06-25T11:23:23.680Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="来玩一下超声波测距">
+<meta name="twitter:description" content="HC-SR04">
+<meta name="twitter:image" content="http://blog.xiaojn.cn/images/raspberry/raspberry_HC-SR04.png">
+  
+    <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晓江南的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hope is a good thing!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-来玩一下超声波测距" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/14/来玩一下超声波测距/" class="article-date">
+  <time datetime="2017-05-14T11:48:36.000Z" itemprop="datePublished">2017-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我学编程/">我学编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      来玩一下超声波测距
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HC-SR04"><a href="#HC-SR04" class="headerlink" title="HC-SR04"></a>HC-SR04</h2><p><img src="/images/raspberry/raspberry_HC-SR04.png" alt="HC-SR04介绍"></p>
+<a id="more"></a>
+
+<h2 id="HC-SR04接线图"><a href="#HC-SR04接线图" class="headerlink" title="HC-SR04接线图"></a>HC-SR04接线图</h2><p><img src="/images/raspberry/raspberry_HC-SR04_pin.png" alt="HC-SR04接线图"></p>
+<h2 id="树莓派GPIO"><a href="#树莓派GPIO" class="headerlink" title="树莓派GPIO"></a>树莓派GPIO</h2><p><img src="/images/raspberry/raspberry_GPIO.png" alt="树莓派Rpi.GPIO使用说明"></p>
+<p>Rpi.GPIO库官方网站：<a href="https://pypi.python.org/pypi/RPi.GPIO" target="_blank" rel="noopener">https://pypi.python.org/pypi/RPi.GPIO</a></p>
+<h2 id="作业1"><a href="#作业1" class="headerlink" title="作业1"></a>作业1</h2><p>结合1602LCD，将HC-SR04超声波传感器收集的距离数据显示到LCD上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, time</span><br><span class="line"><span class="keyword">import</span> Adafruit_CharLCD <span class="keyword">as</span> LCD</span><br><span class="line"></span><br><span class="line">lcd = LCD.Adafruit_CharLCDPlate()</span><br><span class="line"></span><br><span class="line">TRIG = <span class="number">17</span></span><br><span class="line">ECHO = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkdist</span><span class="params">()</span>:</span></span><br><span class="line">    GPIO.output(TRIG, GPIO.HIGH)</span><br><span class="line">    sleep(<span class="number">0.000015</span>)</span><br><span class="line">    GPIO.output(TRIG, GPIO.LOW)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> GPIO.input(ECHO):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    t1 = time()</span><br><span class="line">    <span class="keyword">while</span> GPIO.input(ECHO):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    t2 = time()</span><br><span class="line">    <span class="comment"># 声速为340m/s</span></span><br><span class="line">    <span class="keyword">return</span> (t2 - t1) * <span class="number">34000</span> / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br><span class="line">GPIO.setup(TRIG, GPIO.OUT, initial=GPIO.LOW)</span><br><span class="line">GPIO.setup(ECHO, GPIO.IN)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">'distance:%0.2fcm'</span> % checkdist())</span><br><span class="line">        lcd.clear()</span><br><span class="line">        lcd.message(<span class="string">'distance:\n%0.2fcm'</span> % checkdist())</span><br><span class="line">        sleep(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">    GPIO.cleanup()</span><br></pre></td></tr></table></figure>
+
+<p>完整代码见：<a href="https://github.com/Evanqiao/CSTutorship/blob/master/Raspberry/HC-SR04%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/test_hcsr04_lcd.py" target="_blank" rel="noopener">test_hcsr04_lcd.py</a></p>
+<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><p>利用HC-SR04超声波传感器和1602LCD液晶显示屏，做一个小小的障碍报警装置（当前方50cm内有物体时，LCD显示警报信息，并将LED显示红色；否则显示安全，并将LED显示为绿色）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, time</span><br><span class="line"><span class="keyword">import</span> Adafruit_CharLCD <span class="keyword">as</span> LCD</span><br><span class="line"></span><br><span class="line">lcd = LCD.Adafruit_CharLCDPlate()</span><br><span class="line"></span><br><span class="line">TRIG = <span class="number">17</span></span><br><span class="line">ECHO = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkdist</span><span class="params">()</span>:</span></span><br><span class="line">    GPIO.output(TRIG, GPIO.HIGH)</span><br><span class="line">    sleep(<span class="number">0.000015</span>)</span><br><span class="line">    GPIO.output(TRIG, GPIO.LOW)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> GPIO.input(ECHO):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    t1 = time()</span><br><span class="line">    <span class="keyword">while</span> GPIO.input(ECHO):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    t2 = time()</span><br><span class="line">    <span class="comment"># 声速为340m/s</span></span><br><span class="line">    <span class="keyword">return</span> (t2 - t1) * <span class="number">34000</span> / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br><span class="line">GPIO.setup(TRIG, GPIO.OUT, initial=GPIO.LOW)</span><br><span class="line">GPIO.setup(ECHO, GPIO.IN)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        dist = checkdist()</span><br><span class="line">        print(dist)</span><br><span class="line">        <span class="keyword">if</span> dist &lt; <span class="number">50</span>:</span><br><span class="line">            lcd.clear()</span><br><span class="line">            lcd.message(<span class="string">'Dangerous!!!'</span>)</span><br><span class="line">            lcd.set_color(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            lcd.clear()</span><br><span class="line">            lcd.message(<span class="string">'Safety!!!'</span>)</span><br><span class="line">            lcd.set_color(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">        sleep(<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">    GPIO.cleanup()</span><br></pre></td></tr></table></figure>
+
+<p>完整代码见：<a href="https://github.com/Evanqiao/CSTutorship/blob/master/Raspberry/HC-SR04%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/test_hcsr04_lcd_ring.py" target="_blank" rel="noopener">test_hcsr04_lcd_ring.py</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xiaojn.cn/2017/05/14/来玩一下超声波测距/" data-id="cjxbs4qhf001951679s55vn5b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry/">Raspberry</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/14/The_first_one/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          The First One
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/14/Practical_binaryTree/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初探二叉树的应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客建设/">博客建设</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我学编程/">我学编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文清说/">文清说</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mathematics/">Mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/May/">May</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry/">Raspberry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/free/">free</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Mathematics/" style="font-size: 13.33px;">Mathematics</a> <a href="/tags/May/" style="font-size: 10px;">May</a> <a href="/tags/Raspberry/" style="font-size: 16.67px;">Raspberry</a> <a href="/tags/free/" style="font-size: 10px;">free</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2012_02寻宝/">NOIP2012寻宝</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/30/NOIP2013_2表达式求值/">NOIP2013表达式求值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/05/斜挎包的聚会/">跨斜包的聚会</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/04/Practical_backTracking/">实践回溯法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/21/heap_priority_queue/">堆和优先队列的算法应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 qiaoyihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
