@@ -9,16 +9,16 @@
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实践回溯法">
-<meta property="og:url" content="http://blog.xiaojn.cn/2017/06/04/Practical_backTracking/index.html">
+<meta property="og:url" content="https://evanqiao.github.io/xiaojn-blog/2017/06/04/Practical_backTracking/index.html">
 <meta property="og:site_name" content="晓江南的博客">
 <meta property="og:description" content="素数环问题输入一个整数n，输出所有由1~n排成的环，满足任意两个相邻数之和都是素数。样例输入：6    样例输出：1 4 3 2 5 61 6 5 2 3 4（注：输出都以1开头，其他循环的不用输出，如4 3 2 5 6 1） 思路： 1234567891011输入n状态选择：以环的前i个数为状态void solve(int a[], int i) &amp;#123;    if(i == n) &amp;#1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.xiaojn.cn/images/algorithm/backtracking/8queens.png">
+<meta property="og:image" content="https://evanqiao.github.io/images/algorithm/backtracking/8queens.png">
 <meta property="og:updated_time" content="2019-06-25T11:23:23.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实践回溯法">
 <meta name="twitter:description" content="素数环问题输入一个整数n，输出所有由1~n排成的环，满足任意两个相邻数之和都是素数。样例输入：6    样例输出：1 4 3 2 5 61 6 5 2 3 4（注：输出都以1开头，其他循环的不用输出，如4 3 2 5 6 1） 思路： 1234567891011输入n状态选择：以环的前i个数为状态void solve(int a[], int i) &amp;#123;    if(i == n) &amp;#1">
-<meta name="twitter:image" content="http://blog.xiaojn.cn/images/algorithm/backtracking/8queens.png">
+<meta name="twitter:image" content="https://evanqiao.github.io/images/algorithm/backtracking/8queens.png">
   
     <link rel="alternate" href="/atom.xml" title="晓江南的博客" type="application/atom+xml">
   
@@ -65,7 +65,7 @@
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xiaojn.cn"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://evanqiao.github.io/xiaojn-blog"></form>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@
 
 <h2 id="再谈小球下落问题"><a href="#再谈小球下落问题" class="headerlink" title="再谈小球下落问题"></a>再谈小球下落问题</h2><p>$2^D-1$个开关排列成深度为D的二叉树，最初都为关闭状态。有n个小球从顶端依次落下，并遵循如下规则：</p>
 <p>如果经过一个关闭的开关，则开关打开，小球落向左侧；<br>如果经过一个打开的开关，则开关关闭，小球落向右侧；<br>输入D，n，输出最后一个小球最终落到的位置。<br>样例输入:<br>4 3<br>样例输出：<br>10</p>
-<p>原来的方法是模拟小球下落的过程，具体代码见 <a href="http://blog.xiaojn.cn/2017/05/14/Practical_binaryTree/">初探二叉树的应用</a> 一文。</p>
+<p>原来的方法是模拟小球下落的过程，具体代码见 <a href="http://blog.xiaojn.cn/2017/05/14/Practical_binaryTree/" target="_blank" rel="noopener">初探二叉树的应用</a> 一文。</p>
 <p>&emsp;&emsp;原模拟算法的时间复杂度很高。注意到有这样的规律，节点<code>k</code>左右子节点编号分别为<code>2k</code>和<code>2k+1</code>，每个小球都会落在根结点上，因此前两个小球必然是一个在左子树，一个在右子树。一般地，只需看小球编号的奇偶性，就能知道它是最终在哪棵子树中。对于那些落入根结点左子树的小球来说，只需知道该小球是第几个落在根的左子树里的，就可以知道它下一步往左还是往右了。依此类推，直到小球落到叶子上。<br>&emsp;&emsp;对于编号为<code>id</code>的小球，如果<code>id</code>为奇数，它是往左走的第<code>(id+1)/2</code>个小球，如果<code>id</code>为偶数，它是往右走的第<code>id/2</code>个小球。这样就可以直接模拟出最后一个小球的路线：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> k = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; D - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(n % <span class="number">2</span>) &#123;</span><br><span class="line">        k = k * <span class="number">2</span>;</span><br><span class="line">        n = (n + １) / <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        k = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        n /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -126,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.xiaojn.cn/2017/06/04/Practical_backTracking/" data-id="cjxbt0he3000l2l67e6fpcexj" class="article-share-link">Share</a>
+      <a data-url="https://evanqiao.github.io/xiaojn-blog/2017/06/04/Practical_backTracking/" data-id="cjxbthz3w000ljh67t5pi51ho" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
