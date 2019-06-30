@@ -74,5 +74,5 @@ theme: maupassant
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:Evanqiao/xiaojn-blog.git
+  repo: git@github.com:Evanqiao/evanqiao.github.io.git
 
